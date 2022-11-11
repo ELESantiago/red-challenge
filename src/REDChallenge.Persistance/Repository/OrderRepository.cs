@@ -69,10 +69,10 @@ namespace REDChallenge.Persistance.Repository
             if (orderTypeId != null)
                 predicate = predicate.Where(x => x.OrderTypeId == orderTypeId);
 
-            if (string.IsNullOrWhiteSpace(customerName))
+            if (!string.IsNullOrWhiteSpace(customerName))
                 predicate = predicate.Where(x => x.Customer!.Name.Contains(customerName));
 
-            if (string.IsNullOrWhiteSpace(createdByName))
+            if (!string.IsNullOrWhiteSpace(createdByName))
                 predicate = predicate.Where(x => x.CreatedBy!.Name.Contains(createdByName));
             
             return await predicate
